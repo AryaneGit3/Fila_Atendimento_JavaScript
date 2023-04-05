@@ -2,35 +2,36 @@
  let minhaFila = new Fila(10);
 
  // Função para adicionar um elemento à fila
+
  function adicionarElemento() {
-    const novoNome = document.getElementById("txtNovoNome");
-    const novoCpf = document.getElementById("txtNovoCpf");// Verificar se tem algo digitado e mostrar mensagem se necessário
-     const novoAtendimento = new Atendimento();
-     novoAtendimento.nome = novoNome.value;
+    const novoNome = document.getElementById("txtNovoNome"); // inserindo nome 
+    const novoCpf = document.getElementById("txtNovoCpf");// inserindo cpf
+     const novoAtendimento = new Atendimento(); // criando obj da class Atendimento 
+     novoAtendimento.nome = novoNome.value; // obtendo elementos 
      novoAtendimento.cpf =  novoCpf.value;
      novoAtendimento.data = obterDataAtual();
      novoAtendimento.hora = obterHoraAtual();
-      if (minhaFila.enqueue(novoAtendimento)){
+      if (minhaFila.enqueue(novoAtendimento)){ // Adiiona objeto na fila 
          console.log(minhaFila.toString());
         
       }//fim do if
       else
-         alert("Fila Cheia:(")
+         alert("Fila Cheia:(") // quando cheio 
          console.log(minhaFila.toString());
-         mostrarFila();
+         mostrarFila(); // exibindo fila 
         
     //set atributos do atendimento no objeto a partir dos inputs e funções
     // adicionar na fila e mostrar na tela
  }
 //--------------------------------------------------------------------------------------------
- // Função para remover o primeiro elemento da fila
- function realizarAtendimento() {
-      if (minhaFila.isEmpty())
-      alert("fila vazia");
+ 
+ function realizarAtendimento() { // Funcao para remover o primeiro elemento da fila
+      if (minhaFila.isEmpty()) // se fila estiver vazia
+      alert("fila vazia")
       else {
          mostrarFila();
-          let retorno = minhaFila.dequeue();
-          mostrarMensagemRemocao(retorno);
+          let retorno = minhaFila.dequeue(); 
+          mostrarMensagemRemocao(retorno); // mostra os dados do paciente atendido (removido da fila)
           mostrarFila();
                   
       }
@@ -39,29 +40,31 @@
     
  }
  //--------------------------------------------------------------------------------
- function buscarCpf() {
+ function buscarCpf() { // buscando elemento conforme cpf digitado 
     const cpf = document.getElementById("txtNovoCpf").value.trim(); // o trim retira os espaços em branco
-    const atendimento = new Atendimento(null,cpf); // vamos pesquisar só por CPF
+    const atendimento = new Atendimento(null,cpf); 
     let i = 0;
     for (let [key, item] of Object.entries(minhaFila.itens)){
        atendimento.cpf = cpf;
        i++;
        console.log(i);
-       if (item.equals(atendimento)){ // para cada elemento da fila, verificar com o equals
+       if (item.equals(atendimento)){ // para cada elemento da fila, verificar com o equals - compara 
           alert("Achou! CPF encontrado na Posição: "+i);
           return;
        }
+       else 
+         alert("Nao encontrado!"); // se nao encontrar mostre mensagem
     }
   
     
-   // se nao encontrar mostre mensagem
+   
 }
 //--------------------------------------------------------------------------------------------
-function mostrarMensagemRemocao(pessoaAtendida) {
+function mostrarMensagemRemocao(pessoaAtendida) { // atualiza msg na tela - prox a ser atendida
     const lblMensagemRemocao = document.getElementById("lblMensagemRemocao");
     lblMensagemRemocao.innerHTML ="Próximo a ser atendido(a): "+ pessoaAtendida.nome  +  ", chegou às "  +  pessoaAtendida . hora  +  " está sendo atendido às "  +  obterHoraAtual ( )  +  "."  ;
     mostrarFila();
-    lblMensagemRemocao.style.display = "block";
+    lblMensagemRemocao.style.display = "block"; // mostrar mensagem visivel na tela 
     
 }
 //--------------------------------------------------------------------------------------------

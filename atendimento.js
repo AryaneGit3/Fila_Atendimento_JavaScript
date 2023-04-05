@@ -1,4 +1,4 @@
- class Atendimento{
+ class Atendimento{ // Classe Atendimento 
  constructor() {
       this._nome = "";
       this._cpf = "";
@@ -6,7 +6,7 @@
       this._hora = "";
     }
   
-    get nome() {
+    get nome() { // get busca valor 
         return this._nome;
     }
 
@@ -34,21 +34,19 @@
         return this._hora;
     }
 
-    set hora(hora) {
+    set hora(hora) { // set passa valor 
         this._hora = hora;
     }
 
-    equals(outroAtendimento) {
-      if (!(outroAtendimento instanceof Atendimento)) {
-        return false;
+    equals(outroAtendimento) { // metodo equals 
+      if (!(outroAtendimento instanceof Atendimento)) { // verifica se outroAtendimento eh instancia de Atendimento 
+        return false; // o retorno eh false pq os cpfs sao diferentes 
       }
-      return this._cpf === outroAtendimento.cpf;
+      return this._cpf === outroAtendimento.cpf; // return true pq os cpf de ambos objs sao iguais 
     }
 
-    toString() {
+    toString() { // retorna ao usuario a apresentcao do nome, data e hora de entrada 
         return `\nNome: ${this._nome} - Data: ${this._data} - Hora: ${this._hora}\n`;
       }
 }
-
-
-  
+// $ template string eh a interpolacao entre variaveis dentro de uma String - "Concatenacao"

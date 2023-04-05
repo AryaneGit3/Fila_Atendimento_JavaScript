@@ -1,14 +1,14 @@
 .jumbotron {
     padding: 2rem;
     margin-bottom: 2rem;
-    background-color: #ffc107;
+    background-color: #0ccfcf;
     border-radius: 0.3rem;
-  }
+  } 
   
   .jumbotron h1 {
     font-size: 3rem;
     font-weight: 500;
-    color: #fff;
+    color: #ffffff;
   }
 
   ul {
@@ -19,11 +19,11 @@
 
 li {
 	padding: 5px;
-	background-color: #f2f2f294;
+	background-color: #b4f3be94;
 	border-radius: 5px;
 	margin-bottom: 5px;
 }
 
 li:hover {
-    background-color: #979595;
+    background-color: #b4f3be94;
 }
